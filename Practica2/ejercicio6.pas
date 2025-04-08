@@ -17,10 +17,13 @@ begin
         read(precio);
         if((codigo>=1) and (codigo <= 200))then begin
             if (precio < barato1) then begin
-                barato2:=barato1;
-                barato1:= precio;
-                codigo1:=codigo;
-                codigo2:=codigo;
+                if (precio < barato1) then
+                begin
+                    barato2 := barato1;      
+                    codigo2 := codigo1;      
+                    barato1 := precio;
+                    codigo1 := codigo;
+                end
             end
             else
                 if(precio < barato2)then
