@@ -27,7 +27,7 @@ begin
 end;
 procedure cargarLista(var l: lista; p: jugador);
 var
-    nue: lista;
+    nue: lista; ULT:lista;
 begin
     new(nue);
     nue^.dato := p;
@@ -42,6 +42,7 @@ begin
     leerJugador(p);
     while(p.dni <> 0)do begin
         cargarLista(l,p);
+        agregarAtras(l, p, ULT);
         leerJugador(p);
     end;
 end;
@@ -55,6 +56,19 @@ begin
         writeln(l^.dato.altura:0:2);
         l := l^.sig;    
     end;
+end;
+procedure agregarAtras(var l: lista; p: jugador,var ult: lista);
+var
+    aux:lista;
+begin
+    new(aux);
+    aux·dato := p;
+    aux^.sig := nil;
+    if(l=nil)then
+        l:= aux
+    else 
+        ULT^.sig := aux;
+    ult := aux;
 end;
 var
     l: lista;
